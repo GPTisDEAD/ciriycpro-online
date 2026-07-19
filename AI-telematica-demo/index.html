@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <script type="module" crossorigin src="/AI-telematica-demo/assets/polyfills-BN68mEi6.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Стенд рассчитан на широкий экран (min-width 1280px);
+         на планшетах/мобильных будет горизонтальная прокрутка — это осознано. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover" />
+    <meta name="theme-color" content="#0B1524" />
+    <meta name="description" content="«Цифровой диспетчер» — демо-стенд агентного слоя. СИРИУС ПРО." />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Цифровой диспетчер · демо-стенд v2.5</title>
+
+    <link rel="icon" type="image/svg+xml" href="/AI-telematica-demo/favicon.svg" />
+    <link rel="apple-touch-icon" href="/AI-telematica-demo/favicon.svg" />
+
+    <!-- Шрифты — с preconnect и display=swap:
+         если Google Fonts не откроется (Роскомнадзор/файрвол/офлайн) —
+         покажутся системные fallback'и, страница не блокируется. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" />
+    </noscript>
+
+    <style>
+      /* Reset + базовые типографические fallback'и — работают везде без JS */
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #0B1524;
+        color: #D9E4F5;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                     Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+      }
+      /* Стенд заведомо широкий — на узких экранах даём горизонтальную прокрутку
+         вместо ломаного макета */
+      #root { min-width: 1280px; }
+      body {
+        overflow-x: auto;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right)
+                 env(safe-area-inset-bottom) env(safe-area-inset-left);
+      }
+      /* Заглушка на время загрузки шрифтов / JS */
+      .boot-screen {
+        position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+        background: #0B1524; color: #7E90AC; font-size: 14px; letter-spacing: .5px;
+        z-index: 9999; transition: opacity .3s ease;
+      }
+      .boot-screen.hide { opacity: 0; pointer-events: none; }
+      .boot-dot { width: 8px; height: 8px; border-radius: 50%; background: #E30611;
+                  margin-right: 10px; animation: bootPulse 1.2s infinite ease-in-out; }
+      @keyframes bootPulse { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+      /* No-JS fallback */
+      .nojs {
+        max-width: 640px; margin: 60px auto; padding: 24px;
+        background: #12203A; border: 1px solid #1E3252; border-radius: 12px;
+        font-size: 14px; line-height: 1.55;
+      }
+      .nojs h1 { margin: 0 0 12px; font-size: 18px; color: #D9E4F5; }
+      .nojs code { background: #0E1A30; padding: 2px 6px; border-radius: 4px; color: #38BDF8; }
+    </style>
+    <script type="module" crossorigin src="/AI-telematica-demo/assets/index-B08xbI-j.js"></script>
+    <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+    <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot-screen" id="__boot"><span class="boot-dot"></span> Инициализация стенда…</div>
+    </div>
+    <noscript>
+      <div class="nojs">
+        <h1>Требуется JavaScript</h1>
+        <p>Демо-стенд «Цифровой диспетчер» — интерактивный React-прототип.
+           Включите JavaScript в браузере (<code>Settings → Privacy → JavaScript</code>)
+           и обновите страницу.</p>
+        <p style="color: #7E90AC">Поддерживаются Chrome 87+, Safari 12+, Firefox 78+, Edge 88+.
+           Для старых браузеров подключается legacy-бандл автоматически.</p>
+      </div>
+    </noscript>
+    <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+    <script nomodule crossorigin id="vite-legacy-polyfill" src="/AI-telematica-demo/assets/polyfills-legacy-D0_cPT-F.js"></script>
+    <script nomodule crossorigin id="vite-legacy-entry" data-src="/AI-telematica-demo/assets/index-legacy-ClFTV2yz.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  </body>
+</html>
