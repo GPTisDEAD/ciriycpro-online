@@ -1,35 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex, nofollow" />
-<title>Architect Refactoring · СИРИУС ПРО</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; height: 100%; background: #0B1524; color: #D9E4F5;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  main { min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; padding: 40px 24px; text-align: center; }
-  h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.2; letter-spacing: -0.5px;
-    font-weight: 700; margin: 0 0 14px; color: #F0F6FF; }
-  .until { font-size: clamp(15px, 2.2vw, 18px); line-height: 1.5; color: #9FB1CC;
-    font-weight: 500; margin: 0; }
-  .signature { margin-top: 56px; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 11px; letter-spacing: 2px; color: #5A6B85; text-transform: uppercase; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>CIRIYC RU — Compliance Assistant v1.3 BI · CIRIYC PRO</title>
+    <link rel="icon" href="/logociriycprollc.png" type="image/png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container { text-align: center; padding: 2rem; max-width: 900px; }
+        .logo { width: 180px; height: auto; margin: 0 auto 3rem; display: block; }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #000000;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+        }
+        .lines {
+            font-family: 'SF Mono', 'JetBrains Mono', 'Menlo', ui-monospace, monospace;
+            font-size: 1rem;
+            color: #333333;
+            margin-bottom: 3rem;
+            line-height: 1.9;
+        }
+        .lines .label { color: #999999; margin-right: 0.5rem; }
+        .signature {
+            font-size: 0.85rem;
+            color: #999999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.7rem; letter-spacing: -0.5px; }
+            .lines { font-size: 0.9rem; }
+            .logo { width: 140px; }
+        }
+    </style>
 </head>
 <body>
-<main>
-  <h1>Architect Refactoring</h1>
-  <p class="until">Until 11 August 2026</p>
-  <div class="signature">СИРИУС ПРО</div>
-</main>
+    <div class="container">
+        <img src="/logociriycprollc.png" alt="CIRIYC PRO" class="logo">
+        <h1>CIRIYC RU — Compliance Assistant v1.3 BI</h1>
+        <div class="lines">
+            <div><span class="label">STATUS:</span>Architect Refactoring</div>
+            <div><span class="label">DATE:</span>Until 11 August 2026</div>
+        </div>
+        <div class="signature">СИРИУС ПРО</div>
+    </div>
 </body>
 </html>
