@@ -51,7 +51,9 @@ ciriycpro-online/
 │       ├── ADR-008-form-fallback-and-env-endpoint.md  # форма: WhatsApp → Worker по env
 │       ├── ADR-009-llm-layer.md                       # /llms.txt + md-зеркала
 │       ├── ADR-010-env-driven-analytics.md            # PUBLIC_* env без хардкода
-│       └── ADR-011-quality-gate-check-contacts.md     # chk-скрипт 226 контактов
+│       ├── ADR-011-quality-gate-check-contacts.md     # chk-скрипт 226 контактов
+│       ├── ADR-012-trailing-slash-directory-format.md # SEO + canonical без редиректов
+│       └── ADR-013-vanilla-js-forms-no-react.md       # отход от ADR-001 для формы
 ├── site/                               # Astro-проект, рабочая копия (пушим в ciriycpro/gruzmarket77)
 │   ├── src/
 │   │   ├── content/                    # Astro 5 collections (нарезка corpus.md)
@@ -64,7 +66,6 @@ ciriycpro-online/
 │   │   ├── components/                 # Header, Footer, MobileBar, Hero, ServiceCard, CaseCard,
 │   │   │                               # FaqList (JSON-LD), LeadForm, PriceTable, Breadcrumbs,
 │   │   │                               # JsonLd (LocalBusiness/Service), Analytics (YM)
-│   │   ├── data/site-map.ts            # промежуточные справочники слагов
 │   │   └── styles/global.css           # дизайн-токены §8 CANON
 │   ├── public/                         # robots.txt, favicon.svg, og-default.jpg (1200×630)
 │   ├── worker/                         # Cloudflare Worker: honeypot+rate-limit+Telegram+Sheets
