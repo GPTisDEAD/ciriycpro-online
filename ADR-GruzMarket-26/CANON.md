@@ -37,27 +37,48 @@ ciriycpro-online/
 │   └── Выбор референса.md              # 10 сайтов, ждёт выбор 2–3
 ├── ADR-GruzMarket-26/                  # ЭТОТ блок — ориентация ассистента
 │   ├── CANON.md                        # вы здесь
+│   ├── BACKLOG.md                      # очередь работ, что ждёт от кого
+│   ├── TODO-artem.md                   # пошаговый чек-лист Артёма на утро
+│   ├── photo-plan.md                   # 17 слотов фото + промпты для Gemini
 │   └── adr/                            # архитектурные решения по Найгарду
 │       ├── ADR-001-stack-astro.md
 │       ├── ADR-002-form-cloudflare-worker.md
 │       ├── ADR-003-hosting-github-pages.md
 │       ├── ADR-004-css-vanilla-no-tailwind.md
-│       └── ADR-005-content-source-of-truth.md
-├── src/                                # код сайта (появится после утверждения CANON)
-│   ├── content/                        # Astro Content Collections (нарезка corpus.md)
-│   │   ├── services/   (14 .md)
-│   │   ├── cases/      (5 .md)
-│   │   ├── audiences/  (4 .md)
-│   │   ├── company.json
-│   │   ├── prices.json
-│   │   └── faq.json
-│   ├── pages/
-│   ├── layouts/
-│   └── components/
-├── public/
-├── .github/workflows/deploy.yml
-├── astro.config.mjs
-└── package.json
+│       ├── ADR-005-content-source-of-truth.md
+│       ├── ADR-006-delivery-via-fork-relay.md         # schему sync вместо патчей/App
+│       ├── ADR-007-project-pages-preview.md           # ВРЕМЕННЫЙ — URL rewrite до DNS
+│       ├── ADR-008-form-fallback-and-env-endpoint.md  # форма: WhatsApp → Worker по env
+│       ├── ADR-009-llm-layer.md                       # /llms.txt + md-зеркала
+│       ├── ADR-010-env-driven-analytics.md            # PUBLIC_* env без хардкода
+│       └── ADR-011-quality-gate-check-contacts.md     # chk-скрипт 226 контактов
+├── site/                               # Astro-проект, рабочая копия (пушим в ciriycpro/gruzmarket77)
+│   ├── src/
+│   │   ├── content/                    # Astro 5 collections (нарезка corpus.md)
+│   │   │   ├── services/   (14 .md)
+│   │   │   ├── cases/      (5 .md)
+│   │   │   ├── audiences/  (4 .md)
+│   │   │   ├── company.json  prices.json  faq.json
+│   │   ├── pages/                      # 34 страницы + llms.txt + llms-full.txt + md-зеркала
+│   │   ├── layouts/BaseLayout.astro    # OG, canonical, Google Fonts, Analytics
+│   │   ├── components/                 # Header, Footer, MobileBar, Hero, ServiceCard, CaseCard,
+│   │   │                               # FaqList (JSON-LD), LeadForm, PriceTable, Breadcrumbs,
+│   │   │                               # JsonLd (LocalBusiness/Service), Analytics (YM)
+│   │   ├── data/site-map.ts            # промежуточные справочники слагов
+│   │   └── styles/global.css           # дизайн-токены §8 CANON
+│   ├── public/                         # robots.txt, favicon.svg, og-default.jpg (1200×630)
+│   ├── worker/                         # Cloudflare Worker: honeypot+rate-limit+Telegram+Sheets
+│   ├── .github/workflows/deploy.yml    # GitHub Pages build (URL rewrite — ADR-007)
+│   ├── astro.config.mjs                # SSG, sitemap integration, site = gruzmarket77.ru
+│   ├── content.config.ts               # Zod-схемы коллекций
+│   └── package.json
+├── scripts/                            # операционные скрипты (не часть сайта)
+│   ├── split-corpus.mjs                # идемпотентная нарезка corpus → collections
+│   ├── check-contacts.mjs              # ADR-011, quality gate
+│   ├── sync-site.sh                    # ADR-006, доставка в прод
+│   ├── enable-pages.sh                 # первый запуск Pages без браузера
+│   └── fetch-refs*.sh / fix-github-auth.sh  # исторические, инцидент 2026-10-01
+└── Running 01 10 26/references/        # снапшоты 3 референсов, ~8 МБ CSS/IMG/fonts (можно удалить после утверждения дизайна)
 ```
 
 Прочие артефакты вне этого пути (`AI-telematica-brief/`, `compliance-assistant/`, `mvp/`, `site_copy/`, `ciriyc-ru-assistant/`) — соседние проекты в той же репе, нас не касаются. Не редактировать.
@@ -295,9 +316,9 @@ corpus.md §17  → src/content/company.json
 - Дата последнего апдейта в заголовке блока.
 
 ## 13. STATUS (живой блок — обновляется по ходу)
-**Апдейт:** 2026-10-01
+**Апдейт:** 2026-10-01, вечер
 
-**Фаза:** CANON утверждён, каркас сайта ещё не поднят.
+**Фаза:** превью сайта в проде на github.io, инфра-ключи ждут Артёма.
 
 **Сделано:**
 - Вводные залиты (`CLAUDE.md`, `corpus.md`, `summary.md`, `Выбор референса.md`); CANON v1 + 5 ADR утверждены.
