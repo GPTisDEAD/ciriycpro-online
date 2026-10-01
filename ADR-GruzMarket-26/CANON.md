@@ -307,13 +307,23 @@ corpus.md §17  → src/content/company.json
 - Налажена доставка патчами (§11): патч 0001 (каркас: package.json, config, токены, BaseLayout, Header) применён и запушен в `gruzmarket77` main.
 
 **В работе:**
-- Этап 1 каркаса: Footer, MobileBar готовы в `/site/`; дальше 33 страницы-заглушки, content-схемы, deploy workflow → патч 0002.
+- Превью-сайт жив: https://ciriycpro.github.io/gruzmarket77/ (GitHub Pages прод-репы,
+  временная перепись URL под подпапку — см. deploy.yml, уберётся при DNS).
+- Сайт собран целиком: главная 11 блоков, 14 услуг, 5 кейсов, 4 аудитории,
+  цены/FAQ/контакты/мастера/как-работаем/заявка/политика/блог-анонс.
+- LLM-слой: /llms.txt, /llms-full.txt, 19 md-зеркал, JSON-LD (LocalBusiness,
+  Service+Offer, FAQPage, BreadcrumbList), robots с allow для LLM-ботов.
+- Форма жива: WhatsApp-фолбэк до деплоя воркера; код воркера готов в `site/worker/`.
+- Контакты проверены скриптом `scripts/check-contacts.mjs`: 119 tel / 70 wa /
+  37 mailto — все валидные, заглушек нет.
+- Метрика: компонент готов, ждёт PUBLIC_YM_ID. OG-картинка 1200×630 сгенерена.
 
-**Заблокировано (ждёт Артёма/Таирова):**
-- Ответ Таирова по preview v3 (не блокирует каркас).
-- Telegram-бот/чат для приёма заявок (нужен chat_id).
-- Google Sheets (service account) — для формы.
-- DNS `gruzmarket77.ru` → GitHub Pages новой репы (на этапе деплоя).
+**Очередь и блокеры — в `BACKLOG.md` (этой же папки).** Коротко, ждёт Артёма:
+- Telegram-бот (токен+chat_id), Google SA+таблица, Cloudflare деплой воркера.
+- Номер счётчика Я.Метрики.
+- DNS в SpaceWeb (записи — в BACKLOG).
+- AI-фото по `photo-plan.md` (промпты готовы) / реальные фото Таирова.
+- Согласование прайса и кейсов Таировым.
 
 **Отложено:**
 - Чистка ветки `claude/awesome-goodall-bmsrsb` (у App нет прав, Артём удалит через GitHub UI).
