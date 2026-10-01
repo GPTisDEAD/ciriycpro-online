@@ -159,6 +159,50 @@
   .typo-sample{line-height:1.2}
   .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;background:#fff;padding:24px;border-radius:var(--radius-md)}
 
+  /* 3 ШАГА */
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .step{background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);padding:36px 28px;position:relative;overflow:hidden;transition:all .2s}
+  .step:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+  .step-num{font-family:var(--font-h);font-weight:800;font-size:72px;color:var(--accent);opacity:.15;position:absolute;top:12px;right:18px;line-height:1}
+  .step h3{font-size:19px;margin-bottom:12px;position:relative;z-index:1}
+  .step p{font-size:14px;line-height:1.6;position:relative;z-index:1}
+
+  /* CASES GALLERY */
+  .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .case-card{background:#fff;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);transition:all .2s;cursor:pointer}
+  .case-card:hover{box-shadow:var(--shadow-lift);transform:translateY(-3px)}
+  .case-visual-sm{height:160px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-h);font-weight:700;font-size:16px;opacity:.9;position:relative;overflow:hidden}
+  .case-visual-sm::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 15px,rgba(255,255,255,0.03) 15px,rgba(255,255,255,0.03) 30px)}
+  .case-body-sm{padding:20px}
+  .case-body-sm h3{font-size:16px;margin:8px 0 12px;line-height:1.4}
+  .case-mini-stats{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-muted);flex-wrap:wrap}
+  .case-mini-stats strong{color:var(--accent);font-family:var(--font-h);font-weight:800;font-size:14px}
+
+  /* TRUST LOGOS */
+  .trust-head{text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-muted);margin-bottom:20px;font-family:var(--font-h);font-weight:700}
+  .logos-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .logo-plate{padding:14px 24px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-h);font-weight:700;color:var(--ink-muted);font-size:14px;transition:all .2s}
+  .logo-plate:hover{border-color:var(--border-strong);color:var(--ink)}
+
+  /* TESTIMONIAL */
+  .testimonial{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:48px 56px;position:relative;box-shadow:var(--shadow-md)}
+  .quote-mark{position:absolute;top:12px;left:28px;font-family:Georgia,serif;font-size:120px;line-height:1;color:var(--accent);opacity:.2}
+  .testimonial blockquote{font-size:20px;line-height:1.6;color:var(--ink);font-weight:500;font-style:italic;margin-bottom:28px;position:relative;z-index:1}
+  .t-author{display:flex;align-items:center;gap:14px}
+  .t-avatar{width:52px;height:52px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:800;font-size:16px}
+  .t-author strong{display:block;font-family:var(--font-h);font-size:15px}
+  .t-author span{font-size:13px;color:var(--ink-muted)}
+
+  /* FAQ */
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;transition:all .2s}
+  .faq-item[open]{box-shadow:var(--shadow-sm);border-color:var(--border-strong)}
+  .faq-item summary{font-family:var(--font-h);font-weight:700;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"+";font-size:24px;color:var(--accent);transition:transform .2s}
+  .faq-item[open] summary::after{content:"−"}
+  .faq-body{padding-top:16px;font-size:15px;line-height:1.6;color:var(--ink-muted)}
+
   /* NOTE для Таирова */
   .note{background:#FFF8E6;border:1.5px dashed var(--warning);border-radius:var(--radius-md);padding:20px 24px;margin:0 0 32px;font-size:14px;line-height:1.6}
   .note strong{font-family:var(--font-h);display:block;margin-bottom:6px;color:var(--ink)}
@@ -173,6 +217,13 @@
     .svc-grid{grid-template-columns:1fr}
     .case{grid-template-columns:1fr}
     .case-visual{min-height:180px;font-size:36px}
+    .steps-grid{grid-template-columns:1fr}
+    .cases-grid{grid-template-columns:1fr}
+    .testimonial{padding:32px 24px}
+    .testimonial blockquote{font-size:16px}
+    .quote-mark{font-size:80px;top:4px;left:14px}
+    .logos-row{gap:8px}
+    .logo-plate{padding:10px 16px;font-size:13px}
     .foot-grid{grid-template-columns:1fr 1fr;gap:24px}
     .foot-bottom{flex-direction:column;gap:8px}
     nav{display:none}
@@ -341,25 +392,155 @@
   </div>
 </section>
 
-<!-- CASE -->
+<!-- HOW WE WORK — 3 ШАГА -->
 <section class="block alt">
   <div class="wrap">
     <div class="section-head">
-      <h2>Пример работы</h2>
-      <p>Один из 5 кейсов. На живом сайте будет фото «до/после» и видео-отзыв клиента.</p>
+      <h2>Как мы работаем</h2>
+      <p>Три шага от заявки до бригады на объекте. Прозрачно, без сюрпризов.</p>
     </div>
-    <div class="case">
-      <div class="case-visual">до → после</div>
-      <div class="case-body">
-        <span class="case-tag">Демонтаж</span>
-        <h3>Снос перегородок и вскрытие полов в квартире 78 м²</h3>
-        <p>Полная подготовка под капитальный ремонт. Снесли 3 гипсокартонных перегородки, вскрыли паркет и стяжку, вынесли и утилизировали 4,2 тонны мусора. Бригада из 4 человек, 2 рабочих дня.</p>
-        <div class="case-stats">
-          <div class="case-stat"><strong>78 м²</strong><span>Площадь</span></div>
-          <div class="case-stat"><strong>2 дня</strong><span>Срок</span></div>
-          <div class="case-stat"><strong>142 000 ₽</strong><span>Чек</span></div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Заявка и уточнение</h3>
+        <p>Вы оставляете заявку — звонок, WhatsApp, Telegram или форма. Отвечаем в течение 15 минут. Уточняем задачу, объём, сроки, адрес.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Цена и состав бригады</h3>
+        <p>Называем точную стоимость и количество людей. Для юрлиц — договор, счёт, акты. Для частных — чек, расписка, безнал по QR.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Выход и оплата</h3>
+        <p>Бригада на объекте в согласованный день. Бригадир отвечает за людей и качество. Оплата по факту, после приёмки работ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES — ГАЛЕРЕЯ -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Примеры работ</h2>
+      <p>Пять кейсов в масштабе реального чека. На живом сайте — фото «до/после» и видео-отзыв клиента.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-visual-sm" style="background:linear-gradient(135deg,#1C252B,#3A4047)">до → после</div>
+        <div class="case-body-sm">
+          <span class="case-tag">Демонтаж</span>
+          <h3>Квартира 78 м² под капремонт</h3>
+          <div class="case-mini-stats"><span>2 дня</span><span>·</span><span>4 чел</span><span>·</span><strong>142 000 ₽</strong></div>
         </div>
       </div>
+      <div class="case-card">
+        <div class="case-visual-sm" style="background:linear-gradient(135deg,#2E4057,#1C252B)">офис 240 м²</div>
+        <div class="case-body-sm">
+          <span class="case-tag">Клининг</span>
+          <h3>Уборка после ремонта офиса</h3>
+          <div class="case-mini-stats"><span>1 день</span><span>·</span><span>6 чел</span><span>·</span><strong>86 000 ₽</strong></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-visual-sm" style="background:linear-gradient(135deg,#3A4047,#1C252B)">выставка</div>
+        <div class="case-body-sm">
+          <span class="case-tag">Хелперы</span>
+          <h3>Монтаж/демонтаж стендов, Экспоцентр</h3>
+          <div class="case-mini-stats"><span>3 смены</span><span>·</span><span>8 чел</span><span>·</span><strong>192 000 ₽</strong></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-visual-sm" style="background:linear-gradient(135deg,#1C252B,#2E4057)">санузел + кухня</div>
+        <div class="case-body-sm">
+          <span class="case-tag">Под ключ</span>
+          <h3>Санузел и кухня в квартире</h3>
+          <div class="case-mini-stats"><span>18 дней</span><span>·</span><span>бригада</span><span>·</span><strong>285 000 ₽</strong></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-visual-sm" style="background:linear-gradient(135deg,#3A4047,#2E4057)">120 м² офис</div>
+        <div class="case-body-sm">
+          <span class="case-tag">Абонемент</span>
+          <h3>Клининг офиса 120 м², 3 раза в неделю</h3>
+          <div class="case-mini-stats"><span>мес</span><span>·</span><span>2 клинера</span><span>·</span><strong>52 000 ₽/мес</strong></div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-visual-sm" style="background:linear-gradient(135deg,#1C252B,#4B5053)">склад</div>
+        <div class="case-body-sm">
+          <span class="case-tag">Разнорабочие</span>
+          <h3>Выгрузка фур, склад на Варшавке</h3>
+          <div class="case-mini-stats"><span>смена 12ч</span><span>·</span><span>5 чел</span><span>·</span><strong>24 000 ₽</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST LOGOS -->
+<section class="block alt" style="padding:48px 0">
+  <div class="wrap">
+    <div class="trust-head">Работали с компаниями:</div>
+    <div class="logos-row">
+      <div class="logo-plate">УК Проспект</div>
+      <div class="logo-plate">БЦ Семёновский</div>
+      <div class="logo-plate">Экспоцентр</div>
+      <div class="logo-plate">CleanPro</div>
+      <div class="logo-plate">СК Монолит-77</div>
+      <div class="logo-plate">RetailStore</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="block">
+  <div class="wrap">
+    <div class="testimonial">
+      <div class="quote-mark">"</div>
+      <blockquote>
+        Три месяца сотрудничаем. Заказываем бригаду 2–3 раза в неделю: демонтаж, вывоз мусора, уборка. Ни разу не подвели по срокам, людей присылают проверенных. Для подрядчика это главное.
+      </blockquote>
+      <div class="t-author">
+        <div class="t-avatar">М.С.</div>
+        <div>
+          <strong>Михаил С.</strong>
+          <span>Прораб, частные ремонты</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Частые вопросы</h2>
+      <p>Коротко по делу. Если вопроса нет — задайте через форму или звонок.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Как быстро приедет бригада?</summary>
+        <div class="faq-body">Срочные задачи — в течение 24–48 часов с момента согласования. Плановые — на выбранную вами дату. Круглосуточный выезд по договорённости.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Работаете с юрлицами по безналу?</summary>
+        <div class="faq-body">Да. Договор с ИП Таиров Г.К., счёт, акт выполненных работ, закрывающие документы. Безнал на расчётный счёт в ВТБ.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что если мастер не справится?</summary>
+        <div class="faq-body">Замена бесплатно в течение суток. Если качество работ не устроило — переделываем за свой счёт или возвращаем деньги по акту.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Выезжаете за МКАД?</summary>
+        <div class="faq-body">До 30 км от МКАД — без наценки. Дальше — обсуждаем индивидуально, обычно +10–20% к ставке за выезд.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Можно ли фиксировать ставку на квартал?</summary>
+        <div class="faq-body">Для B2B — да. Заключаем рамочный договор, фиксируем цены на 3 месяца, работаем по заявкам. Это выгоднее на регулярных задачах.</div>
+      </details>
     </div>
   </div>
 </section>
