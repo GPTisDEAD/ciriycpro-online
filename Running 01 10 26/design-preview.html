@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GruzMarket77 — тестовый оттиск дизайна</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#23272B; --ink-muted:#4A5056;
+    --paper:#FFFFFF; --paper-soft:#F3F5F7; --paper-stripe:#EEF1F5;
+    --accent:#F47B20; --accent-hover:#D96610; --accent-soft:#FFF2E6;
+    --success:#2E7D32; --warning:#FBBF24; --danger:#D40000;
+    --border:#E5E7EB; --border-strong:#CBD2DA;
+    --radius-sm:6px; --radius-md:10px; --radius-lg:16px;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+    --shadow-md:0 4px 12px rgba(0,0,0,.08);
+    --shadow-lift:0 8px 24px rgba(0,0,0,.12);
+    --container:1200px;
+    --font-h:'Manrope',system-ui,sans-serif;
+    --font-b:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-b);color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+  h1,h2,h3,h4{font-family:var(--font-h);font-weight:800;line-height:1.2;color:var(--ink)}
+  h1{font-size:48px;letter-spacing:-0.5px}
+  h2{font-size:32px;margin-bottom:24px}
+  h3{font-size:22px;margin-bottom:12px}
+  p{color:var(--ink-muted)}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* HEADER */
+  header{background:var(--paper);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+  .hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .logo{font-family:var(--font-h);font-weight:800;font-size:22px;color:var(--ink)}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav a{color:var(--ink);font-weight:500;font-size:15px}
+  nav a:hover{color:var(--accent)}
+  .hdr-phone{font-family:var(--font-h);font-weight:700;color:var(--ink);font-size:16px}
+
+  /* HERO */
+  .hero{background:var(--paper-soft);padding:72px 0 88px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+  .hero h1 span{color:var(--accent)}
+  .hero .lead{font-size:18px;color:var(--ink-muted);margin:20px 0 32px;max-width:540px;line-height:1.6}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-sm);font-family:var(--font-h);font-weight:700;font-size:15px;letter-spacing:0.2px;cursor:pointer;border:none;transition:all .15s}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
+  .btn-primary:hover{background:var(--accent-hover);box-shadow:var(--shadow-md);text-decoration:none}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border-strong)}
+  .btn-ghost:hover{border-color:var(--ink);text-decoration:none}
+
+  .trust-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:540px}
+  .trust{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+  .trust-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px}
+  .trust strong{display:block;font-family:var(--font-h);font-weight:700;color:var(--ink);font-size:15px;margin-bottom:2px}
+
+  /* CALCULATOR MINI (справа в hero) */
+  .calc{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lift);padding:28px;border:1px solid var(--border)}
+  .calc-head{font-family:var(--font-h);font-weight:700;font-size:18px;margin-bottom:4px}
+  .calc-sub{font-size:13px;color:var(--ink-muted);margin-bottom:20px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;color:var(--ink-muted);margin-bottom:6px;font-weight:500}
+  .field select,.field input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-b);font-size:14px;background:#fff;color:var(--ink)}
+  .field select:focus,.field input:focus{outline:none;border-color:var(--accent)}
+  .calc .btn-primary{width:100%;justify-content:center;margin-top:8px}
+  .calc-result{background:var(--accent-soft);border-radius:var(--radius-sm);padding:12px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
+  .calc-result strong{font-family:var(--font-h);font-size:20px;color:var(--accent)}
+
+  /* SECTION BASE */
+  section.block{padding:80px 0}
+  section.block.alt{background:var(--paper-soft)}
+  .section-head{text-align:center;max-width:720px;margin:0 auto 48px}
+  .section-head p{font-size:17px;margin-top:12px}
+
+  /* AUDIENCES — 4 аудитории */
+  .aud-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .aud{background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);padding:28px 24px;transition:all .2s;cursor:pointer}
+  .aud:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+  .aud-icon{width:44px;height:44px;background:var(--accent-soft);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px}
+  .aud h3{font-size:17px;margin-bottom:8px}
+  .aud p{font-size:14px;line-height:1.5}
+
+  /* SERVICES — карточки услуг */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .svc{background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);padding:28px;transition:all .2s}
+  .svc:hover{border-color:var(--accent-strong);box-shadow:var(--shadow-md)}
+  .svc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+  .svc h3{font-size:19px;margin:0}
+  .svc-price{background:var(--accent-soft);color:var(--accent);font-family:var(--font-h);font-weight:800;font-size:14px;padding:4px 10px;border-radius:var(--radius-sm);white-space:nowrap}
+  .svc p{font-size:14px;line-height:1.6;margin-bottom:16px;color:var(--ink-muted)}
+  .svc a{font-family:var(--font-h);font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px}
+
+  /* PRICE TABLE */
+  .price-wrap{overflow-x:auto;border-radius:var(--radius-md);box-shadow:var(--shadow-sm)}
+  table.price{width:100%;background:#fff;border-collapse:collapse;font-size:15px}
+  table.price thead th{background:var(--ink);color:#fff;text-align:left;padding:16px 20px;font-family:var(--font-h);font-weight:700;font-size:14px;letter-spacing:0.3px;text-transform:uppercase}
+  table.price tbody td{padding:16px 20px;border-bottom:1px solid var(--border);color:var(--ink)}
+  table.price tbody tr:nth-child(even){background:var(--paper-stripe)}
+  table.price tbody tr:hover{background:var(--accent-soft)}
+  table.price .num{font-family:var(--font-h);font-weight:800;color:var(--accent);white-space:nowrap}
+  table.price .cta-cell{text-align:right}
+  table.price .cta-small{font-size:13px;padding:8px 16px}
+
+  /* CASE CARD */
+  .case{background:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);display:grid;grid-template-columns:1fr 1.3fr}
+  .case-visual{background:linear-gradient(135deg,#23272B 0%,#3A4047 100%);min-height:280px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-h);font-weight:800;font-size:48px;opacity:.85}
+  .case-visual::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,0.03) 20px,rgba(255,255,255,0.03) 40px)}
+  .case-body{padding:36px}
+  .case-tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-family:var(--font-h);font-weight:700;font-size:12px;padding:4px 10px;border-radius:var(--radius-sm);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px}
+  .case h3{font-size:24px;margin-bottom:12px}
+  .case p{margin-bottom:20px;font-size:15px;line-height:1.6}
+  .case-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:20px;border-top:1px solid var(--border)}
+  .case-stat strong{display:block;font-family:var(--font-h);font-weight:800;font-size:24px;color:var(--accent)}
+  .case-stat span{font-size:12px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.3px}
+
+  /* FORM */
+  .form-wrap{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:40px;max-width:640px;margin:0 auto}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-grid .full{grid-column:1/-1}
+  .form-wrap .btn-primary{width:100%;justify-content:center;margin-top:8px;padding:16px}
+  .form-hint{text-align:center;font-size:13px;color:var(--ink-muted);margin-top:16px}
+
+  /* MOBILE BAR */
+  .mob-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);display:none;grid-template-columns:1fr 1fr 1fr;gap:1px;z-index:100}
+  .mob-bar a{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 4px;color:#fff;font-size:11px;font-family:var(--font-h);font-weight:700;background:var(--ink)}
+  .mob-bar a.cta{background:var(--accent)}
+  .mob-bar .ico{font-size:20px;margin-bottom:3px}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#fff;padding:48px 0 24px;margin-bottom:0}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
+  footer h4{font-family:var(--font-h);font-size:14px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px;color:#fff}
+  footer ul{list-style:none}
+  footer li{margin-bottom:8px}
+  footer a{color:#CBD2DA;font-size:14px}
+  footer a:hover{color:var(--accent)}
+  .foot-nap{color:#CBD2DA;font-size:14px;line-height:1.7}
+  .foot-nap strong{color:#fff;display:block;margin-bottom:6px;font-family:var(--font-h)}
+  .foot-bottom{border-top:1px solid #3A4047;padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:#868C92}
+
+  /* STYLEGUIDE BLOCK */
+  .guide{background:var(--paper-soft);padding:60px 0}
+  .guide h2{text-align:center}
+  .swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:32px 0}
+  .sw{text-align:center}
+  .sw-color{height:72px;border-radius:var(--radius-sm);margin-bottom:8px;box-shadow:var(--shadow-sm)}
+  .sw-name{font-family:var(--font-h);font-weight:700;font-size:12px;color:var(--ink)}
+  .sw-hex{font-family:var(--font-b);font-size:11px;color:var(--ink-muted)}
+  .typo{display:grid;grid-template-columns:160px 1fr;gap:12px 24px;align-items:baseline;background:#fff;padding:24px;border-radius:var(--radius-md);margin-top:24px}
+  .typo-label{font-size:12px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:0.3px}
+  .typo-sample{line-height:1.2}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;background:#fff;padding:24px;border-radius:var(--radius-md)}
+
+  /* NOTE для Таирова */
+  .note{background:#FFF8E6;border:1.5px dashed var(--warning);border-radius:var(--radius-md);padding:20px 24px;margin:0 0 32px;font-size:14px;line-height:1.6}
+  .note strong{font-family:var(--font-h);display:block;margin-bottom:6px;color:var(--ink)}
+
+  /* MOBILE */
+  @media (max-width: 900px){
+    h1{font-size:34px}
+    h2{font-size:26px}
+    .hero{padding:48px 0 72px}
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .aud-grid{grid-template-columns:repeat(2,1fr)}
+    .svc-grid{grid-template-columns:1fr}
+    .case{grid-template-columns:1fr}
+    .case-visual{min-height:180px;font-size:36px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:24px}
+    .foot-bottom{flex-direction:column;gap:8px}
+    nav{display:none}
+    .mob-bar{display:grid}
+    body{padding-bottom:60px}
+    .swatches{grid-template-columns:repeat(3,1fr)}
+    .form-grid{grid-template-columns:1fr}
+    .trust-row{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap hdr">
+    <div class="logo">Груз<span>Маркет</span>77</div>
+    <nav>
+      <ul>
+        <li><a href="#">Услуги</a></li>
+        <li><a href="#">Для бизнеса</a></li>
+        <li><a href="#">Кейсы</a></li>
+        <li><a href="#">Цены</a></li>
+        <li><a href="#">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-phone">+7 926 614-39-59</div>
+  </div>
+</header>
+
+<!-- NOTE FOR TAIROV -->
+<div class="wrap" style="padding-top:24px">
+  <div class="note">
+    <strong>Для Г.К. Таирова — тестовый оттиск, 01.10.2026</strong>
+    Это пробная страница с нашим предлагаемым дизайн-кодом: цвета, шрифты, кнопки, карточки, таблица цен, форма. Контент — пример из вашего корпуса (демонтаж, грузчики). Можно смотреть на мобиле и десктопе. Если что-то не нравится — скажите словами («хочу темнее фон», «кнопки другого цвета», «шрифт тяжелее»), поправим и покажем ещё раз.
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Бригада на объект за <span>24–48 часов</span>. Москва и область.</h1>
+      <p class="lead">Рабочие, мастера и бригады под любые задачи: демонтаж, отделка, клининг, грузчики, электрика, монолит. Договор с ИП, безнал, оплата по факту, замена мастера по претензии бесплатно.</p>
+      <div class="cta-row">
+        <button class="btn btn-primary">Оставить заявку →</button>
+        <button class="btn btn-ghost">Рассчитать стоимость</button>
+      </div>
+      <div class="trust-row">
+        <div class="trust"><span class="trust-dot"></span><div><strong>24–48 часов</strong>Выход бригады на объект</div></div>
+        <div class="trust"><span class="trust-dot"></span><div><strong>Договор и безнал</strong>Для ИП, ООО, УК</div></div>
+        <div class="trust"><span class="trust-dot"></span><div><strong>Замена бесплатно</strong>По претензии в течение суток</div></div>
+        <div class="trust"><span class="trust-dot"></span><div><strong>Москва и МО</strong>Круглосуточный выезд</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="calc">
+        <div class="calc-head">Калькулятор смены</div>
+        <div class="calc-sub">Ориентир по стоимости за 30 секунд</div>
+        <div class="field">
+          <label>Кто нужен</label>
+          <select>
+            <option>Грузчики</option>
+            <option>Разнорабочие</option>
+            <option>Отделочники</option>
+            <option>Клинеры</option>
+            <option>Электрики</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Сколько человек</label>
+          <input type="number" value="3" min="1">
+        </div>
+        <div class="field">
+          <label>На сколько часов</label>
+          <input type="number" value="8" min="1">
+        </div>
+        <button class="btn btn-primary">Рассчитать</button>
+        <div class="calc-result">Ориентир: <strong>9 600 ₽</strong> за смену. Финальная цена — после уточнения задачи.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCES -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Кому подходит</h2>
+      <p>Четыре типа задач, четыре формата работы. Выберите ваш — попадёте на страницу с ценами и примерами.</p>
+    </div>
+    <div class="aud-grid">
+      <div class="aud">
+        <div class="aud-icon">🛠</div>
+        <h3>Прорабам и подрядчикам</h3>
+        <p>Бригада на объект за 24–48 часов. Демонтаж, отделка, электрика, стяжка, грузчики.</p>
+      </div>
+      <div class="aud">
+        <div class="aud-icon">🏢</div>
+        <h3>УК, офисам, клинингу</h3>
+        <p>Обслуживание и люди в субподряд. Клининг, окна, территории, сантехник.</p>
+      </div>
+      <div class="aud">
+        <div class="aud-icon">🎪</div>
+        <h3>Ивент-агентствам</h3>
+        <p>Хелперы и грузчики сменами. Монтаж/демонтаж стендов, уборка площадок.</p>
+      </div>
+      <div class="aud">
+        <div class="aud-icon">🏠</div>
+        <h3>Частным клиентам</h3>
+        <p>Ремонт, уборка, дом, переезд. Отделка под ключ, ландшафт, облицовка.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Популярные услуги</h2>
+      <p>Фрагмент из 14 услуг каталога. Полный список — на странице «Услуги».</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-top"><h3>Демонтаж</h3><div class="svc-price">от 150 ₽/м²</div></div>
+        <p>Снос перегородок, вскрытие полов, вынос мусора. Квартиры, офисы, промобъекты. Бригада 3–5 человек, срок 1–3 дня.</p>
+        <a href="#">Подробнее →</a>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Грузчики</h3><div class="svc-price">от 400 ₽/час</div></div>
+        <p>Переезды, выгрузка фур, стройка, склад. От 1 человека, круглосуточно. Хелперы на выставки и ивенты.</p>
+        <a href="#">Подробнее →</a>
+      </div>
+      <div class="svc">
+        <div class="svc-top"><h3>Уборка после ремонта</h3><div class="svc-price">от 90 ₽/м²</div></div>
+        <p>Снятие строительной пыли, мытьё окон, уборка санузлов. Квартиры и офисы. Выезд в день заявки.</p>
+        <a href="#">Подробнее →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE TABLE -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Прайс — от бригады/часа</h2>
+      <p>Финальная цена зависит от объёма, графика и условий объекта. Для B2B — фиксированные ставки на квартал.</p>
+    </div>
+    <div class="price-wrap">
+      <table class="price">
+        <thead>
+          <tr><th>Услуга</th><th>Бригада</th><th>Срок</th><th>Цена от</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Демонтаж квартиры</td><td>3–5 человек</td><td>1–3 дня</td><td class="num">150 ₽/м²</td><td class="cta-cell"><button class="btn btn-primary cta-small">Заявка</button></td></tr>
+          <tr><td>Грузчики на объект</td><td>от 1 чел</td><td>в день заявки</td><td class="num">400 ₽/час</td><td class="cta-cell"><button class="btn btn-primary cta-small">Заявка</button></td></tr>
+          <tr><td>Уборка после ремонта</td><td>2–4 человек</td><td>1 день</td><td class="num">90 ₽/м²</td><td class="cta-cell"><button class="btn btn-primary cta-small">Заявка</button></td></tr>
+          <tr><td>Клининг офиса</td><td>1–3 человек</td><td>абонемент</td><td class="num">от 15 000 ₽/мес</td><td class="cta-cell"><button class="btn btn-primary cta-small">Заявка</button></td></tr>
+          <tr><td>Электрик, сантехник</td><td>1 мастер</td><td>в день заявки</td><td class="num">1 500 ₽/вызов</td><td class="cta-cell"><button class="btn btn-primary cta-small">Заявка</button></td></tr>
+          <tr><td>Отделка под ключ</td><td>бригада</td><td>от 2 недель</td><td class="num">8 500 ₽/м²</td><td class="cta-cell"><button class="btn btn-primary cta-small">Заявка</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<section class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Пример работы</h2>
+      <p>Один из 5 кейсов. На живом сайте будет фото «до/после» и видео-отзыв клиента.</p>
+    </div>
+    <div class="case">
+      <div class="case-visual">до → после</div>
+      <div class="case-body">
+        <span class="case-tag">Демонтаж</span>
+        <h3>Снос перегородок и вскрытие полов в квартире 78 м²</h3>
+        <p>Полная подготовка под капитальный ремонт. Снесли 3 гипсокартонных перегородки, вскрыли паркет и стяжку, вынесли и утилизировали 4,2 тонны мусора. Бригада из 4 человек, 2 рабочих дня.</p>
+        <div class="case-stats">
+          <div class="case-stat"><strong>78 м²</strong><span>Площадь</span></div>
+          <div class="case-stat"><strong>2 дня</strong><span>Срок</span></div>
+          <div class="case-stat"><strong>142 000 ₽</strong><span>Чек</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Оставьте заявку</h2>
+      <p>Ответим в течение 15 минут в рабочее время. Для срочных задач — звоните напрямую.</p>
+    </div>
+    <div class="form-wrap">
+      <div class="form-grid">
+        <div class="field full">
+          <label>Что нужно сделать</label>
+          <input type="text" placeholder="Например: демонтаж перегородок в офисе 60 м²">
+        </div>
+        <div class="field">
+          <label>Ваше имя</label>
+          <input type="text" placeholder="Александр">
+        </div>
+        <div class="field">
+          <label>Телефон</label>
+          <input type="tel" placeholder="+7 (___) ___-__-__">
+        </div>
+        <div class="field full">
+          <label>Когда начать</label>
+          <select>
+            <option>Срочно, сегодня</option>
+            <option>Завтра утром</option>
+            <option>На этой неделе</option>
+            <option>На следующей неделе</option>
+            <option>Нужно обсудить</option>
+          </select>
+        </div>
+        <div class="full">
+          <button class="btn btn-primary">Отправить заявку →</button>
+        </div>
+      </div>
+      <div class="form-hint">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STYLE GUIDE — для Артёма визуальный контроль -->
+<section class="guide">
+  <div class="wrap">
+    <h2>Дизайн-код в деталях</h2>
+
+    <h3 style="margin-top:32px">Палитра</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-color" style="background:#23272B"></div><div class="sw-name">Графит</div><div class="sw-hex">#23272B</div></div>
+      <div class="sw"><div class="sw-color" style="background:#F47B20"></div><div class="sw-name">Оранжевый</div><div class="sw-hex">#F47B20</div></div>
+      <div class="sw"><div class="sw-color" style="background:#FFFFFF;border:1px solid #E5E7EB"></div><div class="sw-name">Белый</div><div class="sw-hex">#FFFFFF</div></div>
+      <div class="sw"><div class="sw-color" style="background:#F3F5F7"></div><div class="sw-name">Фон секций</div><div class="sw-hex">#F3F5F7</div></div>
+      <div class="sw"><div class="sw-color" style="background:#2E7D32"></div><div class="sw-name">Успех</div><div class="sw-hex">#2E7D32</div></div>
+      <div class="sw"><div class="sw-color" style="background:#D40000"></div><div class="sw-name">Ошибка</div><div class="sw-hex">#D40000</div></div>
+    </div>
+
+    <h3 style="margin-top:40px">Типографика</h3>
+    <div class="typo">
+      <div class="typo-label">H1 Manrope 800</div><div class="typo-sample" style="font-family:var(--font-h);font-weight:800;font-size:48px">Бригада на объект за 24 часа</div>
+      <div class="typo-label">H2 Manrope 800</div><div class="typo-sample" style="font-family:var(--font-h);font-weight:800;font-size:32px">Популярные услуги</div>
+      <div class="typo-label">H3 Manrope 700</div><div class="typo-sample" style="font-family:var(--font-h);font-weight:700;font-size:22px">Демонтаж перегородок</div>
+      <div class="typo-label">Body Inter 400</div><div class="typo-sample" style="font-family:var(--font-b);font-weight:400;font-size:16px">Рабочие, мастера и бригады под любые задачи — от разовых выездов до регулярного обслуживания объектов в Москве и МО.</div>
+      <div class="typo-label">Caption Inter 500</div><div class="typo-sample" style="font-family:var(--font-b);font-weight:500;font-size:14px;color:var(--ink-muted)">Финальная цена — после уточнения задачи</div>
+    </div>
+
+    <h3 style="margin-top:40px">Кнопки</h3>
+    <div class="btn-row">
+      <button class="btn btn-primary">Оставить заявку →</button>
+      <button class="btn btn-ghost">Рассчитать стоимость</button>
+      <button class="btn btn-primary cta-small">Малая CTA</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="color:#fff;margin-bottom:14px">Груз<span>Маркет</span>77</div>
+        <div class="foot-nap">
+          <strong>ИП Таиров Г.К.</strong>
+          ИНН 050401330914 · ОГРНИП 318057100042760<br>
+          Москва и Московская область<br>
+          Заявки 8:00–22:00 ежедневно<br>
+          Выезды круглосуточно по договорённости
+        </div>
+      </div>
+      <div>
+        <h4>Услуги</h4>
+        <ul>
+          <li><a href="#">Демонтаж</a></li>
+          <li><a href="#">Грузчики</a></li>
+          <li><a href="#">Клининг</a></li>
+          <li><a href="#">Отделка</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="#">Для бизнеса</a></li>
+          <li><a href="#">Кейсы</a></li>
+          <li><a href="#">Прайс</a></li>
+          <li><a href="#">Вопросы</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <ul>
+          <li><a href="tel:+79266143959">+7 926 614-39-59</a></li>
+          <li><a href="https://wa.me/79266143959">WhatsApp</a></li>
+          <li><a href="#">Telegram</a></li>
+          <li><a href="mailto:tgk-777@mail.ru">tgk-777@mail.ru</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 ИП Таиров. gruzmarket77.ru</div>
+      <div><a href="#" style="color:#868C92">Политика конфиденциальности</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BAR -->
+<div class="mob-bar">
+  <a href="https://wa.me/79266143959"><div class="ico">💬</div>WhatsApp</a>
+  <a href="tel:+79266143959"><div class="ico">📞</div>Позвонить</a>
+  <a href="#" class="cta"><div class="ico">✉</div>Заявка</a>
+</div>
+
+</body>
+</html>
