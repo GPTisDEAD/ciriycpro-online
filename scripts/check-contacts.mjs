@@ -66,8 +66,10 @@ for (const file of walk(DIST)) {
     if (visible.includes(word)) problems.push(`${rel}: найден маркер заглушки «${word}»`);
   }
 
-  // Телефон в видимом тексте — должен быть ровно наш
-  for (const m of visible.matchAll(/\+7[\s(]*\d{3}[\s)]*\d{3}[-\s]*\d{2}[-\s]*\d{2}/g)) {
+  // Телефон в видимом тексте — должен быть ровно наш.
+  // placeholder-атрибуты — не контакты, вырезаем перед проверкой.
+  const visibleNoPh = visible.replace(/placeholder="[^"]*"/g, '');
+  for (const m of visibleNoPh.matchAll(/\+7[\s(]*\d{3}[\s)]*\d{3}[-\s]*\d{2}[-\s]*\d{2}/g)) {
     const norm = m[0].replace(/[\s()-]/g, '');
     if (norm !== company.phone_tel) problems.push(`${rel}: ЧУЖОЙ номер в тексте "${m[0]}"`);
   }
