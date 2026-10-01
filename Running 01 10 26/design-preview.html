@@ -9,15 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#23272B; --ink-muted:#4A5056;
-    --paper:#FFFFFF; --paper-soft:#F3F5F7; --paper-stripe:#EEF1F5;
+    /* v2 — tuned on reference CSS from autsorsing-personala + gruzchikimoscow */
+    --ink:#1C252B; --ink-muted:#4B5053;
+    --paper:#FFFFFF; --paper-soft:#F7F9FB; --paper-stripe:#EEF1F5;
     --accent:#F47B20; --accent-hover:#D96610; --accent-soft:#FFF2E6;
     --success:#2E7D32; --warning:#FBBF24; --danger:#D40000;
-    --border:#E5E7EB; --border-strong:#CBD2DA;
-    --radius-sm:6px; --radius-md:10px; --radius-lg:16px;
+    --border:#EDEDED; --border-strong:#D9DDDF;
+    --radius-sm:5px; --radius-md:10px; --radius-lg:20px;
     --shadow-sm:0 1px 2px rgba(0,0,0,.05);
-    --shadow-md:0 4px 12px rgba(0,0,0,.08);
-    --shadow-lift:0 8px 24px rgba(0,0,0,.12);
+    --shadow-md:0 4px 18px rgba(8,35,48,.08);
+    --shadow-lift:0 6px 36px rgba(38,62,77,.1);
     --container:1200px;
     --font-h:'Manrope',system-ui,sans-serif;
     --font-b:'Inter',system-ui,sans-serif;
@@ -205,8 +206,8 @@
 <!-- NOTE FOR TAIROV -->
 <div class="wrap" style="padding-top:24px">
   <div class="note">
-    <strong>Для Г.К. Таирова — тестовый оттиск, 01.10.2026</strong>
-    Это пробная страница с нашим предлагаемым дизайн-кодом: цвета, шрифты, кнопки, карточки, таблица цен, форма. Контент — пример из вашего корпуса (демонтаж, грузчики). Можно смотреть на мобиле и десктопе. Если что-то не нравится — скажите словами («хочу темнее фон», «кнопки другого цвета», «шрифт тяжелее»), поправим и покажем ещё раз.
+    <strong>Для Г.К. Таирова — тестовый оттиск v2, 01.10.2026</strong>
+    Это пробная страница с нашим предлагаемым дизайн-кодом: цвета, шрифты, кнопки, карточки, таблица цен, форма. Значения выверены по трём референсам, которые вам понравились (autpersonal, autsorsing-personala, gruzchikimoscow). Контент — пример из вашего корпуса. Можно смотреть на мобиле и десктопе. Если что-то не нравится — скажите словами («хочу темнее фон», «кнопки другого цвета», «шрифт тяжелее»), поправим.
   </div>
 </div>
 
@@ -410,10 +411,10 @@
 
     <h3 style="margin-top:32px">Палитра</h3>
     <div class="swatches">
-      <div class="sw"><div class="sw-color" style="background:#23272B"></div><div class="sw-name">Графит</div><div class="sw-hex">#23272B</div></div>
+      <div class="sw"><div class="sw-color" style="background:#1C252B"></div><div class="sw-name">Графит</div><div class="sw-hex">#1C252B</div></div>
       <div class="sw"><div class="sw-color" style="background:#F47B20"></div><div class="sw-name">Оранжевый</div><div class="sw-hex">#F47B20</div></div>
-      <div class="sw"><div class="sw-color" style="background:#FFFFFF;border:1px solid #E5E7EB"></div><div class="sw-name">Белый</div><div class="sw-hex">#FFFFFF</div></div>
-      <div class="sw"><div class="sw-color" style="background:#F3F5F7"></div><div class="sw-name">Фон секций</div><div class="sw-hex">#F3F5F7</div></div>
+      <div class="sw"><div class="sw-color" style="background:#FFFFFF;border:1px solid #EDEDED"></div><div class="sw-name">Белый</div><div class="sw-hex">#FFFFFF</div></div>
+      <div class="sw"><div class="sw-color" style="background:#F7F9FB"></div><div class="sw-name">Фон секций</div><div class="sw-hex">#F7F9FB</div></div>
       <div class="sw"><div class="sw-color" style="background:#2E7D32"></div><div class="sw-name">Успех</div><div class="sw-hex">#2E7D32</div></div>
       <div class="sw"><div class="sw-color" style="background:#D40000"></div><div class="sw-name">Ошибка</div><div class="sw-hex">#D40000</div></div>
     </div>
