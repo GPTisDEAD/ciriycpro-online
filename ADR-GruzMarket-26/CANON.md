@@ -238,14 +238,34 @@ corpus.md §17  → src/content/company.json
 Единая структура страницы услуги (из CLAUDE.md): H1 → AEO-абзац → что входит → кому → прайс → бригада и сроки → как заказать (3 шага) → 3 связанные услуги → кейс → FAQ (3) → заявка.
 
 ## 11. Доставка артефактов из cloud-сессии
-Отличается от процесса Артёма в `ops/`-проекте (там он пушит сам, здесь — я).
 
-Процесс:
-1. Я работаю в ветке `claude/vibrant-lovelace-m8u2cd` в cloud-сессии.
-2. Делаю маленькие осмысленные коммиты, пушу напрямую в origin.
-3. По завершении логической единицы (страница / компонент / фича) — обновляю §13 STATUS в этом файле и пушу.
-4. Артём читает `git log origin/claude/vibrant-lovelace-m8u2cd`, при согласии — merge PR в `main`, auto-deploy.
-5. Если Артёму нужна правка в чьём-то коммите — говорит здесь, я фикшу новым коммитом (не amend, не force-push, не history rewrite).
+### Два репозитория, два канала
+- **`GPTisDEAD/ciriycpro-online`** (рабочая репа ассистента): App установлен, ассистент пушит НАПРЯМУЮ в ветку `claude/vibrant-lovelace-m8u2cd`. Здесь живут: CANON, ADR, вводные, references, скрипты, патчи, рабочая копия кода в `/site/`.
+- **`ciriycpro/gruzmarket77`** (продакшн-репа сайта): App НЕ установлен, прямого push у ассистента НЕТ. Доставка — **только патчами** (см. ниже), как в ops-CANON v1.2.
+
+### Инцидент 2026-10-01 и решение (НЕ повторять грабли)
+**Проблема.** Потрачено ~2 часа на попытки дать ассистенту push в новую репу:
+- токен `GPTisDEAD` в gh протух (401), relogin требует браузер/почту (sudo mode);
+- у `ciriycpro` нет write в `GPTisDEAD/ciriycpro-online` (403), пришлось пушить через форк;
+- скрипт `fix-github-auth.sh` поставил глобальную подмену `insteadOf https→ssh`, SSH-ключ при этом не был залит → ЛЮБОЙ https-push на Маке стал падать с «Permission denied (publickey)»;
+- `gh repo create` под GPTisDEAD упал (протухший токен), репу создали под `ciriycpro`;
+- установка Claude App требует браузер + email-верификацию — Артём это делать не обязан.
+
+**Решение (работает, проверено).** Схема из ops-CANON v1.2 — `git format-patch` → `git am`:
+1. Ассистент коммитит код в `/site/` рабочей репы (push туда есть).
+2. Ассистент генерирует патч: `git format-patch -1 <sha> --stdout -- site/ > patches/NNNN-name.patch`, правит `From:` на `Artem Yakshin <inbox@ciriyc.ru>`, пушит в `patches/`.
+3. Артём применяет ОДНОЙ командой: `curl -sSL <raw-url скрипта> | bash` — скрипт `scripts/apply-site-patch.sh` сам: переключает gh на ciriycpro, снимает insteadOf-подмену, клонит/пуллит `gruzmarket77`, применяет `git am -p2` (срезает префикс `site/` — файлы ложатся в корень), пушит строго токеном gh (`git -c credential.helper= -c credential.helper='!gh auth git-credential' push`), минуя keychain.
+
+**Правила из инцидента:**
+- НЕ трогать auth-настройки Mac Артёма скриптами без крайней нужды; если скрипт ставит глобальный git config — он ОБЯЗАН уметь его снять, и следующий скрипт снимает его защитно.
+- НЕ просить Артёма ходить в браузер/почту для GitHub (sudo mode, App install, token refresh) — всё решается патч-схемой.
+- Многострочные команды в чат НЕ давать — копипаст в zsh ломается на невидимых символах (NBSP): «command not found: mkdir». Только `curl <raw-url> | bash` из скрипта в репе.
+- Долгие загрузки в скриптах: таймаут ≤8с, параллелизм, жёсткие лимиты количества файлов — иначе «висит» (инцидент с fetch-refs-full: 30с × десятки шрифтов).
+- Пустая свежая репа: `git am` требует HEAD → сначала `git commit --allow-empty -m init`, затем `git branch -M main` (на старом git дефолт — master).
+
+### Прочее
+- По завершении логической единицы — обновлять §13 STATUS и пушить.
+- Правка в уже доставленном коде — новым коммитом и новым патчем (не amend, не force-push, не history rewrite).
 
 Запрещено:
 - `git push --force*`
@@ -280,22 +300,20 @@ corpus.md §17  → src/content/company.json
 **Фаза:** CANON утверждён, каркас сайта ещё не поднят.
 
 **Сделано:**
-- Создана папка `Running 01 10 26/` в репе.
-- Залиты вводные: `CLAUDE.md`, `corpus.md` (1545 строк), `summary.md`, `Выбор референса.md`.
-- Проведён анализ корпуса, посчитан процент LLM-оптимизации (~0.57% декларативно, план — ~8–10%).
-- Утверждён CANON v1.0 + стартовые 5 ADR.
-- Таиров выбрал референсы 4/6/7 (autpersonal, autsorsing-personala, gruzchiki).
-- Скачаны снапшоты всех трёх референсов (HTML+CSS+IMG+fonts) в `Running 01 10 26/references/`, ~8 МБ.
-- Выверен дизайн-код v2 на реальных CSS референсов, обновлён §8 CANON + `design-preview.html`.
+- Вводные залиты (`CLAUDE.md`, `corpus.md`, `summary.md`, `Выбор референса.md`); CANON v1 + 5 ADR утверждены.
+- Таиров выбрал референсы 4/6/7; снапшоты скачаны в `references/` (~8 МБ, HTML+CSS+IMG+fonts).
+- Дизайн-код v2 выверен по реальным CSS референсов (§8), `design-preview.html` v3 (+5 блоков) утверждён Артёмом.
+- Решён вопрос хостинга: отдельная репа **`ciriycpro/gruzmarket77`** (ADR-003 требует корректировки: CNAME корня занят ciriycpro.online).
+- Налажена доставка патчами (§11): патч 0001 (каркас: package.json, config, токены, BaseLayout, Header) применён и запушен в `gruzmarket77` main.
 
 **В работе:**
-- Показ `design-preview.html v2` Таирову, ожидание его правок / «ок».
+- Этап 1 каркаса: Footer, MobileBar готовы в `/site/`; дальше 33 страницы-заглушки, content-схемы, deploy workflow → патч 0002.
 
-**Заблокировано (ждёт Артёма):**
-- Отмашка Таирова на дизайн-код v2 → старт скелета Astro.
+**Заблокировано (ждёт Артёма/Таирова):**
+- Ответ Таирова по preview v3 (не блокирует каркас).
 - Telegram-бот/чат для приёма заявок (нужен chat_id).
-- Доступ к Google Sheets API (service account JSON) — для формы.
-- Подключение домена `gruzmarket77.ru` к GitHub Pages (CNAME).
+- Google Sheets (service account) — для формы.
+- DNS `gruzmarket77.ru` → GitHub Pages новой репы (на этапе деплоя).
 
 **Отложено:**
 - Чистка ветки `claude/awesome-goodall-bmsrsb` (у App нет прав, Артём удалит через GitHub UI).
