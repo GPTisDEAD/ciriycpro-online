@@ -1,6 +1,6 @@
 # ADR-007: Превью на Project Pages с переписью URL до подключения домена
 
-**Status:** Temporary · 2026-10-01 · Removed-when: DNS gruzmarket77.ru готов
+**Status:** Removed · 2026-10-02 (действовало 2026-10-01 → 2026-10-02 ночь)
 
 ## Context
 Домен `gruzmarket77.ru` ещё не подключён (DNS в SpaceWeb, задача на Артёма).
@@ -49,3 +49,11 @@ Astro-сайт собран с `site: 'https://gruzmarket77.ru'` и корнев
 **Удаление этого ADR:** при переходе на домен — пометить status `Removed`,
 PR с удалением sed-шага и возвратом CNAME. Не удалять файл — пусть лежит
 как исторический след.
+
+## Removed 2026-10-02
+sed-блок убран из `.github/workflows/deploy.yml` и
+`.github/workflows/sync-and-deploy.yml`. `public/CNAME` восстановлен со
+значением `gruzmarket77.ru`. Custom domain в Pages задан через
+`gh api -X PUT repos/ciriycpro/gruzmarket77/pages -f cname=gruzmarket77.ru`.
+Сайт переехал на https://gruzmarket77.ru, ciriycpro.github.io/gruzmarket77/
+даёт 404 либо редирект (как GitHub решит).
