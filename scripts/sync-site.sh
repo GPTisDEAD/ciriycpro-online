@@ -8,8 +8,8 @@ WORK_BRANCH="claude/vibrant-lovelace-m8u2cd"
 PROD="https://github.com/GPTisDEAD/gruzmarket77.git"
 TMP="$HOME/.gm-sync"
 
-echo "=== 1/5 gh → ciriycpro, снимаю insteadOf (защитно) ==="
-gh auth switch -u ciriycpro 2>/dev/null || true
+echo "=== 1/5 gh → GPTisDEAD (хозяин прод-репы), снимаю insteadOf (защитно) ==="
+gh auth switch -u GPTisDEAD 2>/dev/null || true
 git config --global --unset-all url.git@github.com:.insteadof 2>/dev/null || true
 
 echo ""
@@ -44,7 +44,7 @@ SUMMARY=$(cd "$TMP/work" && git log -1 --pretty=%s)
 git commit -m "sync: $SUMMARY"
 
 echo ""
-echo "=== 5/5 Пушу строго токеном gh/ciriycpro ==="
+echo "=== 5/5 Пушу строго токеном gh/GPTisDEAD ==="
 git -c credential.helper= -c credential.helper='!gh auth git-credential' push -u origin main
 
 cd "$HOME"
