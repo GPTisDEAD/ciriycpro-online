@@ -3,7 +3,7 @@
 # Одна команда, никаких шагов руками.
 set -u
 
-REPO="ciriycpro/gruzmarket77"
+REPO="GPTisDEAD/gruzmarket77"
 WF="sync-and-deploy.yml"
 DOMAIN="gruzmarket77.ru"
 

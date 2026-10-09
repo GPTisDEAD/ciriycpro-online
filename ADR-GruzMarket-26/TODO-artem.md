@@ -31,7 +31,7 @@
 - [ ] Аккаунт на dash.cloudflare.com (бесплатный, без домена).
 - [ ] В терминале на Маке:
   ```
-  cd ~ && rm -rf gm-worker && git clone --depth 1 https://github.com/ciriycpro/gruzmarket77.git gm-worker && cd gm-worker/worker
+  cd ~ && rm -rf gm-worker && git clone --depth 1 https://github.com/GPTisDEAD/gruzmarket77.git gm-worker && cd gm-worker/worker
   npx wrangler login        # откроет браузер один раз — это неизбежно, Cloudflare
   npx wrangler deploy
   npx wrangler secret put TELEGRAM_BOT_TOKEN   # вставишь токен из шага 1

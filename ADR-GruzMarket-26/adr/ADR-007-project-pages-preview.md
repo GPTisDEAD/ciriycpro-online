@@ -7,7 +7,7 @@
 Но Таиров и Артём должны видеть **живой сайт сегодня**, не ждать неделю DNS.
 
 GitHub Pages проекта по умолчанию живёт по URL
-`https://ciriycpro.github.io/gruzmarket77/` — **в подпапке `/gruzmarket77/`**.
+`https://gptisdead.github.io/gruzmarket77/` — **в подпапке `/gruzmarket77/`**.
 Astro-сайт собран с `site: 'https://gruzmarket77.ru'` и корневыми путями
 (`href="/uslugi/..."`). Открывается в подпапке — все внутренние ссылки ведут в 404.
 
@@ -42,7 +42,7 @@ Astro-сайт собран с `site: 'https://gruzmarket77.ru'` и корнев
 **Минусы:**
 - При удалении шага и возврате CNAME нужна внимательность: удалить sed-блок,
   вернуть `public/CNAME` со значением `gruzmarket77.ru`, задать custom domain
-  через `gh api -X PUT repos/ciriycpro/gruzmarket77/pages -f cname=gruzmarket77.ru`.
+  через `gh api -X PUT repos/GPTisDEAD/gruzmarket77/pages -f cname=gruzmarket77.ru`.
 - Абсолютные URL с `/gruzmarket77/` могут протечь в кэш CDN/мессенджеров
   (OG-картинки), после перехода на домен — одна волна рефрешей шарингов.
 
@@ -54,6 +54,6 @@ PR с удалением sed-шага и возвратом CNAME. Не удал
 sed-блок убран из `.github/workflows/deploy.yml` и
 `.github/workflows/sync-and-deploy.yml`. `public/CNAME` восстановлен со
 значением `gruzmarket77.ru`. Custom domain в Pages задан через
-`gh api -X PUT repos/ciriycpro/gruzmarket77/pages -f cname=gruzmarket77.ru`.
-Сайт переехал на https://gruzmarket77.ru, ciriycpro.github.io/gruzmarket77/
+`gh api -X PUT repos/GPTisDEAD/gruzmarket77/pages -f cname=gruzmarket77.ru`.
+Сайт переехал на https://gruzmarket77.ru, gptisdead.github.io/gruzmarket77/
 даёт 404 либо редирект (как GitHub решит).

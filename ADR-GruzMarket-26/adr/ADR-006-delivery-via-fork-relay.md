@@ -3,12 +3,12 @@
 **Status:** Accepted · 2026-10-01 · Supersedes-part-of: ADR-003
 
 ## Context
-Прод-репа сайта — **`ciriycpro/gruzmarket77`** (создана отдельно, так как в
+Прод-репа сайта — **`GPTisDEAD/gruzmarket77`** (создана отдельно, так как в
 `GPTisDEAD/ciriycpro-online` CNAME уже занят `ciriycpro.online`).
 
 Ограничения, выявленные инцидентом 2026-10-01:
 - Claude GitHub App установлен только на рабочую репу (GPTisDEAD/ciriycpro-online),
-  в прод-репу ciriycpro/gruzmarket77 — нет; установка требует браузер + sudo-режим.
+  в прод-репу GPTisDEAD/gruzmarket77 — нет; установка требует браузер + sudo-режим.
 - Токен ciriycpro у Артёма рабочий, но push в GPTisDEAD/ciriycpro-online у него нет.
 - Токен GPTisDEAD протух, перелогин через браузер — Артёма гонять туда нежелательно.
 - Прямой push ассистента в прод-репу невозможен из-за отсутствия App.

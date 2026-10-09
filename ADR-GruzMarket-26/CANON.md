@@ -54,7 +54,7 @@ ciriycpro-online/
 │       ├── ADR-011-quality-gate-check-contacts.md     # chk-скрипт 226 контактов
 │       ├── ADR-012-trailing-slash-directory-format.md # SEO + canonical без редиректов
 │       └── ADR-013-vanilla-js-forms-no-react.md       # отход от ADR-001 для формы
-├── site/                               # Astro-проект, рабочая копия (пушим в ciriycpro/gruzmarket77)
+├── site/                               # Astro-проект, рабочая копия (пушим в GPTisDEAD/gruzmarket77)
 │   ├── src/
 │   │   ├── content/                    # Astro 5 collections (нарезка corpus.md)
 │   │   │   ├── services/   (14 .md)
@@ -263,7 +263,7 @@ corpus.md §17  → src/content/company.json
 
 ### Два репозитория, два канала
 - **`GPTisDEAD/ciriycpro-online`** (рабочая репа ассистента): App установлен, ассистент пушит НАПРЯМУЮ в ветку `claude/vibrant-lovelace-m8u2cd`. Здесь живут: CANON, ADR, вводные, references, скрипты, патчи, рабочая копия кода в `/site/`.
-- **`ciriycpro/gruzmarket77`** (продакшн-репа сайта): App НЕ установлен, прямого push у ассистента НЕТ. Доставка — **только патчами** (см. ниже), как в ops-CANON v1.2.
+- **`GPTisDEAD/gruzmarket77`** (продакшн-репа сайта): App НЕ установлен, прямого push у ассистента НЕТ. Доставка — **только патчами** (см. ниже), как в ops-CANON v1.2.
 
 ### Инцидент 2026-10-01 и решение (НЕ повторять грабли)
 **Проблема.** Потрачено ~2 часа на попытки дать ассистенту push в новую репу:
@@ -325,11 +325,11 @@ corpus.md §17  → src/content/company.json
 - Вводные залиты (`CLAUDE.md`, `corpus.md`, `summary.md`, `Выбор референса.md`); CANON v1 + 5 ADR утверждены.
 - Таиров выбрал референсы 4/6/7; снапшоты скачаны в `references/` (~8 МБ, HTML+CSS+IMG+fonts).
 - Дизайн-код v2 выверен по реальным CSS референсов (§8), `design-preview.html` v3 (+5 блоков) утверждён Артёмом.
-- Решён вопрос хостинга: отдельная репа **`ciriycpro/gruzmarket77`** (ADR-003 требует корректировки: CNAME корня занят ciriycpro.online).
+- Решён вопрос хостинга: отдельная репа **`GPTisDEAD/gruzmarket77`** (ADR-003 требует корректировки: CNAME корня занят ciriycpro.online).
 - Налажена доставка патчами (§11): патч 0001 (каркас: package.json, config, токены, BaseLayout, Header) применён и запушен в `gruzmarket77` main.
 
 **В работе:**
-- Превью-сайт жив: https://ciriycpro.github.io/gruzmarket77/ (GitHub Pages прод-репы,
+- Превью-сайт жив: https://gptisdead.github.io/gruzmarket77/ (GitHub Pages прод-репы,
   временная перепись URL под подпапку — см. deploy.yml, уберётся при DNS).
 - Сайт собран целиком: главная 11 блоков, 14 услуг, 5 кейсов, 4 аудитории,
   цены/FAQ/контакты/мастера/как-работаем/заявка/политика/блог-анонс.

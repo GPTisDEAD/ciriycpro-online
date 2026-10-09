@@ -1,5 +1,5 @@
 #!/bin/bash
-# apply-site-patch.sh — клонирует ciriycpro/gruzmarket77, применяет патч каркаса в КОРЕНЬ, пушит.
+# apply-site-patch.sh — клонирует GPTisDEAD/gruzmarket77, применяет патч каркаса в КОРЕНЬ, пушит.
 # Закрывает все известные грабли: протухший токен GPTisDEAD, insteadOf-подмена HTTPS→SSH,
 # пустая репа без ветки, default branch master, кэш паролей в keychain.
 set -e
@@ -15,7 +15,7 @@ echo ""
 echo "=== 3/6 Клонирую gruzmarket77 (public, auth не нужен) ==="
 cd ~
 rm -rf gruzmarket77
-git clone https://github.com/ciriycpro/gruzmarket77.git
+git clone https://github.com/GPTisDEAD/gruzmarket77.git
 cd gruzmarket77
 
 echo ""
@@ -35,4 +35,4 @@ echo "=== 6/6 Пушу строго токеном gh/ciriycpro (минуя keyc
 git -c credential.helper= -c credential.helper='!gh auth git-credential' push -u origin main
 
 echo ""
-echo "=== DONE — https://github.com/ciriycpro/gruzmarket77 ==="
+echo "=== DONE — https://github.com/GPTisDEAD/gruzmarket77 ==="

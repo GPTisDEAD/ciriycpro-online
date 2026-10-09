@@ -1,12 +1,12 @@
 #!/bin/bash
 # enable-pages.sh — делает ВСЁ для превью сайта одной командой, без браузера:
-# 1) синкает свежий код в ciriycpro/gruzmarket77 (встроенный sync)
+# 1) синкает свежий код в GPTisDEAD/gruzmarket77 (встроенный sync)
 # 2) включает GitHub Pages (source = GitHub Actions) через gh api
 # 3) запускает деплой-workflow и ждёт результат
 # 4) печатает ссылку на живой сайт
 set -e
 
-REPO="ciriycpro/gruzmarket77"
+REPO="GPTisDEAD/gruzmarket77"
 WORK_RAW="https://github.com/GPTisDEAD/ciriycpro-online.git"
 WORK_BRANCH="claude/vibrant-lovelace-m8u2cd"
 TMP="$HOME/.gm-sync"
@@ -70,6 +70,6 @@ done
 echo ""
 echo "=== 6/6 ГОТОВО ==="
 echo ""
-echo "  Сайт: https://ciriycpro.github.io/gruzmarket77/"
+echo "  Сайт: https://gptisdead.github.io/gruzmarket77/"
 echo ""
 echo "  (если 404 — подожди минуту и обнови; первый деплой Pages тупит)"

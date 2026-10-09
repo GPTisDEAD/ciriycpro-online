@@ -26,7 +26,7 @@
   - грузмаркет77.рф: 301-редирект на gruzmarket77.ru (средствами SpaceWeb)
 - [ ] После DNS — ассистент: вернуть `public/CNAME` (gruzmarket77.ru), убрать
   sed-шаг переписи URL из deploy.yml, задать custom domain через
-  `gh api -X PUT repos/ciriycpro/gruzmarket77/pages -f cname=gruzmarket77.ru`,
+  `gh api -X PUT repos/GPTisDEAD/gruzmarket77/pages -f cname=gruzmarket77.ru`,
   дождаться HTTPS-сертификата.
 - [ ] Я.Вебмастер + Google Search Console: добавить сайт, скормить sitemap.
 

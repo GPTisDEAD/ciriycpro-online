@@ -1,11 +1,11 @@
 #!/bin/bash
-# sync-site.sh — синхронизирует /site/ рабочей репы → корень ciriycpro/gruzmarket77 и пушит.
+# sync-site.sh — синхронизирует /site/ рабочей репы → корень GPTisDEAD/gruzmarket77 и пушит.
 # Идемпотентен: запускать можно сколько угодно раз, пушит только если есть изменения.
 set -e
 
 WORK_RAW="https://github.com/GPTisDEAD/ciriycpro-online.git"
 WORK_BRANCH="claude/vibrant-lovelace-m8u2cd"
-PROD="https://github.com/ciriycpro/gruzmarket77.git"
+PROD="https://github.com/GPTisDEAD/gruzmarket77.git"
 TMP="$HOME/.gm-sync"
 
 echo "=== 1/5 gh → ciriycpro, снимаю insteadOf (защитно) ==="
@@ -50,4 +50,4 @@ git -c credential.helper= -c credential.helper='!gh auth git-credential' push -u
 cd "$HOME"
 rm -rf "$TMP"
 echo ""
-echo "=== DONE — https://github.com/ciriycpro/gruzmarket77 ==="
+echo "=== DONE — https://github.com/GPTisDEAD/gruzmarket77 ==="
