@@ -119,7 +119,8 @@ fi
 # ─────────────────────────────────────────
 hdr "7. SEO: мета, viewport, canonical, OG"
 grep -q "viewport" /tmp/mega-index.html && ok "mobile viewport meta" || fail "НЕТ viewport meta"
-TITLE=$(grep -oP '<title>\K[^<]+' /tmp/mega-index.html | head -1)
+# BSD grep на Маке не умеет -oP (Perl regex), используем sed
+TITLE=$(sed -n 's|.*<title[^>]*>\([^<]*\)</title>.*|\1|p' /tmp/mega-index.html | head -1)
 if [ -n "$TITLE" ]; then
   TITLE_LEN=${#TITLE}
   ok "title ($TITLE_LEN симв): ${TITLE:0:70}..."
@@ -127,7 +128,7 @@ if [ -n "$TITLE" ]; then
 else
   fail "НЕТ title"
 fi
-DESC=$(grep -oP 'name="description" content="\K[^"]+' /tmp/mega-index.html | head -1)
+DESC=$(sed -n 's|.*name="description"[^>]*content="\([^"]*\)".*|\1|p' /tmp/mega-index.html | head -1)
 if [ -n "$DESC" ]; then
   ok "meta description: ${DESC:0:70}..."
 else
