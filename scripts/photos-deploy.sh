@@ -4,10 +4,13 @@
 # Выход: /img/hero.webp + /img/cases/{slug}-{before,after,card}.webp (×5 кейсов)
 set -e
 
-# macOS: папка Загрузки в Finder'е = ~/Downloads в файловой системе.
-SRC="$HOME/Downloads/фотки для сайта"
-# Fallback если юзер положил по русскому пути вручную
-[ -d "$SRC" ] || SRC="$HOME/Загрузки/фотки для сайта"
+# Ищем папку "фотки для сайта" в Downloads/Desktop/Documents через find
+# (macOS хранит кириллицу в разных формах Unicode — литерал в скрипте не всегда равен имени на диске).
+SRC=$(find "$HOME/Downloads" "$HOME/Desktop" "$HOME/Documents" "$HOME/Загрузки" \
+        -maxdepth 2 -type d -iname "*фот*для*сайта" 2>/dev/null | head -1)
+if [ -z "$SRC" ]; then
+  SRC="$HOME/Downloads/фотки для сайта"  # для сообщения об ошибке
+fi
 TMP="$HOME/.gm-photos-work"
 WORK_URL="https://github.com/GPTisDEAD/ciriycpro-online.git"
 WORK_BRANCH="claude/vibrant-lovelace-m8u2cd"
