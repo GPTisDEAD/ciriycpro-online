@@ -4,7 +4,10 @@
 # Выход: /img/hero.webp + /img/cases/{slug}-{before,after,card}.webp (×5 кейсов)
 set -e
 
-SRC="$HOME/Загрузки/фотки для сайта"
+# macOS: папка Загрузки в Finder'е = ~/Downloads в файловой системе.
+SRC="$HOME/Downloads/фотки для сайта"
+# Fallback если юзер положил по русскому пути вручную
+[ -d "$SRC" ] || SRC="$HOME/Загрузки/фотки для сайта"
 TMP="$HOME/.gm-photos-work"
 WORK_URL="https://github.com/GPTisDEAD/ciriycpro-online.git"
 WORK_BRANCH="claude/vibrant-lovelace-m8u2cd"
