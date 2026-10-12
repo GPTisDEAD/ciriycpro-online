@@ -1,0 +1,75 @@
+---
+// VideoBlock — автозапускающееся муэт-видео 16:9.
+// Используется на главной (hero-фон) и на 5 страницах услуг, по карте
+// ADR-GruzMarket-26/video-prompts/README.md.
+// Все клипы 5–8 сек, loop, poster-кадр показывается пока видео грузится.
+interface Props {
+  src: string;        // /video/uslugi/demontazh.mp4
+  poster: string;     // /video/uslugi/demontazh-poster.jpg
+  caption?: string;   // опционально: подпись в углу
+  rounded?: boolean;  // true — скругление + радиус. false — впритык (для hero).
+}
+const { src, poster, caption, rounded = true } = Astro.props;
+---
+<figure class={`video-block${rounded ? '' : ' flat'}`}>
+  <video
+    src={src}
+    poster={poster}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    width="1920"
+    height="1080"
+    aria-hidden="true"
+  ></video>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .video-block {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #1C252B;
+  }
+  .video-block.flat { border-radius: 0; }
+  .video-block:not(.flat) { border-radius: var(--radius-md); }
+
+  .video-block video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-block figcaption {
+    position: absolute;
+    bottom: 14px; left: 14px;
+    background: rgba(28, 37, 43, 0.85);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(4px);
+    letter-spacing: .3px;
+  }
+
+  /* юзер попросил «меньше анимации» — показываем только постер */
+  @media (prefers-reduced-motion: reduce) {
+    .video-block video {
+      display: none;
+    }
+    .video-block::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: var(--video-poster, none);
+      background-size: cover;
+      background-position: center;
+    }
+  }
+</style>

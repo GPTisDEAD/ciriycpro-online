@@ -6,7 +6,18 @@ import ServiceCard from '../../components/ServiceCard.astro';
 import FaqList from '../../components/FaqList.astro';
 import LeadForm from '../../components/LeadForm.astro';
 import JsonLd from '../../components/JsonLd.astro';
+import VideoBlock from '../../components/VideoBlock.astro';
 import company from '../../content/company.json';
+
+// Карта видео по slug'у — только для 5 услуг с сильной визуальной демонстрацией.
+// Файлы кладутся в site/public/video/uslugi/{slug}.mp4 + {slug}-poster.jpg.
+const VIDEO_SERVICES: Record<string, string> = {
+  'demontazh': 'Удар кувалдой — демонтаж быстрый',
+  'uborka-posle-remonta': 'Чистота за один проход',
+  'otdelochnye-raboty': 'Шпаклёвка — ровные стены',
+  'mytyo-okon': 'Промальп — панорамные окна',
+  'otdelka-pod-klyuch': 'Укладка плитки — точность',
+};
 
 export async function getStaticPaths() {
   const items = await getCollection('services');
@@ -34,6 +45,7 @@ while ((m = faqRegex.exec(faqMatch)) !== null) {
 
 const title = `${s.data.title} в Москве — цена ${s.data.price_from}, бригада ${s.data.brigade} | ГрузМаркет77`;
 const desc = s.data.answer;
+const videoCaption = VIDEO_SERVICES[s.id];
 ---
 <BaseLayout title={title} description={desc}>
   <JsonLd type="Service" serviceName={s.data.title} description={desc} priceFrom={s.data.price_from} url={new URL(Astro.url.pathname, Astro.site).toString()} />
@@ -57,6 +69,18 @@ const desc = s.data.answer;
       </div>
     </div>
   </section>
+
+  {videoCaption && (
+    <section class="svc-video">
+      <div class="wrap">
+        <VideoBlock
+          src={`/video/uslugi/${s.id}.mp4`}
+          poster={`/video/uslugi/${s.id}-poster.jpg`}
+          caption={videoCaption}
+        />
+      </div>
+    </section>
+  )}
 
   <section class="svc-body">
     <div class="wrap grid">
@@ -138,6 +162,8 @@ const desc = s.data.answer;
   }
   .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
+  .svc-video { padding: 0 0 16px; background: var(--paper-soft); }
+  .svc-video :global(.video-block) { max-height: 480px; }
   .svc-body { padding: 56px 0; }
   .grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; }
 
