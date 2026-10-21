@@ -40,7 +40,9 @@ git clone -q --depth 1 -b "$WORK_BRANCH" "$WORK_URL" "$TMP/work"
 echo ""
 echo "=== 3/4 Копирую $COUNT файлов в wave-2-raw/ ==="
 mkdir -p "$TMP/work/wave-2-raw"
-cp "$SRC"/*.{jpeg,jpg,JPEG,JPG} "$TMP/work/wave-2-raw/" 2>/dev/null || true
+# find вместо glob — zsh ругается nomatch если какого-то расширения нет
+find "$SRC" -maxdepth 1 -type f \( -iname "*.jpeg" -o -iname "*.jpg" \) \
+  -exec cp {} "$TMP/work/wave-2-raw/" \;
 UPLOADED=$(ls -1 "$TMP/work/wave-2-raw/" | wc -l | tr -d ' ')
 echo "    Скопировано: $UPLOADED"
 
